@@ -6,15 +6,14 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"
+	"github.com/nimamakhmali/Shorou-Team/go-web-backend/internal/handler"
 )
-
 
 func main() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatalf("Error loading .env file")
+		log.Fatal("Error loading .env file")
 	}
 
 	port := os.Getenv("PORT")
@@ -22,11 +21,8 @@ func main() {
 		port = "8080"
 	}
 
-	r := chi.NewRouter()
-	r.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "pong")
-	})
-	http.ListenAndServe(":"+port, r)
-	fmt.Println("server listening on port", port)
+	r := handler.NewRouter() 
+
+	fmt.Println("Server listening on port", port)
 	log.Fatal(http.ListenAndServe(":"+port, r))
 }
