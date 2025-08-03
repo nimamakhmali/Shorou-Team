@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Shorou Team Project Setup Script
-echo "🚀 Setting up Shorou Team Project..."
+echo " Setting up Shorou Team Project..."
 
 # Colors for output
 RED='\033[0;31m'
